@@ -1,52 +1,70 @@
-public class SimpleLinkedList {
-    private static Node head;
-  	private static Node tail;
+public class LinkedList{
 
-	public static void main(String[] args) {
-    	Node test = new Node(2);
-        test.add(5);
-      	test.printList();
-	} 
-  
-    public static class Node {
-    	Node next;
-    	int data;
+    private class TreeNode(){
+        TreeNode next;
+        int val;
 
-        public Node(int data){
-          	System.out.println("adding: " + data);
-			this.data = data;
-          	this.next = null;
-          
-            if(head==null){
-            	head = this;
-            };
-          	//tail = this;
+        public TreeNode(int val){
+            this.val = val;
         }
-
-        public void add(int data){
-            Node newNode = new Node(data);
-            newNode.next = null;
-            if(head == null) {
-                //if first element, make it the head and tail of the list
-              	//System.out.println("starting with: " + data);
-                head = newNode;
-                tail = newNode;
-            } else {
-              	//System.out.println("appending: " + data);
-                //put new node at the end, previous node point to new
-                tail.next = newNode;
-                tail = newNode;
-            }
-        }
-      	
-        public void printList(){
-          	System.out.println("Printing elements:");
-        	Node temp = head;
-          	while(temp!=null){
-          		System.out.println(temp.data);
-              	temp = temp.next;
-          	}
-        }
-
     }
+
+    public LinkedList(){
+        TreeNode head = null;
+        TreeNode tail = head;
+    }
+
+    public void add(int val){
+        TreeNode llnode = new TreeNode(val);
+        if(head == null){
+            head = llnode;
+            tail = llnode;
+        } else {
+            tail.next = llnode;
+            tail = llnode;
+        }
+    }
+
+    public void addFirst(int val){
+        TreeNode llnode = new TreeNode(val);
+        llnode.next = head;
+        head = llnode;
+    }
+
+    //public void addLast(int val){}
+
+    public void removeFirst(){
+        if(head == null) {
+            return;
+        } else if(head.next == null){
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+        }
+    }
+
+    public void removeLast(){
+        if(tail = null){
+            return;
+        } else {
+        
+        }
+    }
+
+    public int size(){}
+
+    public int get(){}
+
+    public boolean contains(int val){}
 }
+
+/*
+ * addFirst
+ * addLast
+ * removeLast
+ * removeFirst
+ * size
+ * get
+ * contains
+ */
